@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: rails_animal_shelter_api_development
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= 'epicodus' %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +60,8 @@ development:
 test:
   <<: *default
   database: rails_animal_shelter_api_test
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= 'epicodus' %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,5 +85,5 @@ test:
 production:
   <<: *default
   database: rails_animal_shelter_api_production
-  username: rails_animal_shelter_api
-  password: <%= ENV['RAILS_ANIMAL_SHELTER_API_DATABASE_PASSWORD'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= 'epicodus' %>
