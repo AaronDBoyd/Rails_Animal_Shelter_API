@@ -42,3 +42,14 @@ describe 'get animal by search', :type => :request do
     expect(JSON.parse(response.body)[0]['breed']).to eq('doggo')
   end
 end
+
+describe 'gets a random animal', :type => :request do 
+  let!(:animals) { FactoryBot.create_list(:animal, 20)}
+
+  it 'returns a rondom animal if the random param is set to true' do
+    get '/api/v1/animals?random=true'
+    response_array = []
+    response_array << JSON.parse(response.body)
+    expect(response_array.size).to eq(1)
+  end
+end
