@@ -1,14 +1,15 @@
 class Api::V1::AnimalsController < ApplicationController
 
   def index
-
+    @animals = Animal.all
+    json_response(@animals)
   end
 
   def show
 
   end
 
-  def create!
+  def create
 
   end
 
