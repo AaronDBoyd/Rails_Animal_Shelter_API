@@ -36,4 +36,9 @@ describe 'get animal by search', :type => :request do
     get '/api/v1/animals?name=scoob'
     expect(JSON.parse(response.body)[0]['name']).to eq('Scooby')
   end
+
+  it 'returns an animal by breed' do
+    get '/api/v1/animals?breed=dog'
+    expect(JSON.parse(response.body)[0]['breed']).to eq('doggo')
+  end
 end
