@@ -11,7 +11,8 @@ class Api::V1::AnimalsController < ApplicationController
   end
 
   def create
-
+    @animal = Animal.create!(animal_params)
+    json_response(@animal, :created)
   end
 
   def update
