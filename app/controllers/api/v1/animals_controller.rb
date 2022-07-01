@@ -9,6 +9,8 @@ class Api::V1::AnimalsController < ApplicationController
       @animals = Animal.search_breed(breed)
     elsif params[:page].present?
       @animals = Animal.order('name ASC').paginate(:page => params[:page], per_page:10)
+    elsif params[:random].present?
+      @animals = Animal.all.sample
     else
       @animals = Animal.order('name ASC')
     end
