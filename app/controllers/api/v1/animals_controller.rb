@@ -1,7 +1,17 @@
 class Api::V1::AnimalsController < ApplicationController
 
   def index
-    @animals = Animal.all
+    if params[:name].present?
+      name = params[:name]
+      @animals = Animal.search_name(name)
+    elsif params[:breed].present?
+      breed = params[:breed]
+      @animals = Animal.search_breed(breed)
+    elsif params[:page].present?
+      @animals = Animal.order('name ASC').paginate(:page => params[:page], per_page:10)
+    else
+      @animals = Animal.order('name ASC')
+    end
     json_response(@animals)
   end
 
