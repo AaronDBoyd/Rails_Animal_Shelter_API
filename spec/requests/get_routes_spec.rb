@@ -6,7 +6,6 @@ describe "get all animals route", :type => :request do
   before { get '/api/v1/animals' }
 
   it 'returns all animals' do
-    puts JSON.parse(response.body).class
     expect(JSON.parse(response.body).size).to eq(20)
   end
 
@@ -23,7 +22,18 @@ describe "get an animal route", :type => :request do
     get "/api/v1/animals/#{@test.id}"
     response_array = []
     response_array << JSON.parse(response.body)
-    puts JSON.parse(response.body).class
     expect(response_array.size).to eq(1)
+  end
+end
+
+describe 'get animal by search', :type => :request do
+
+  before do
+    post '/api/v1/animals', params: { :name => "scooby", :age => 14, :breed => "doggo"}
+  end
+    
+  it 'returns an animal by name' do
+    get '/api/v1/animals?name=scoob'
+    expect(JSON.parse(response.body)[0]['name']).to eq('Scooby')
   end
 end
