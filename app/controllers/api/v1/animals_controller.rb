@@ -6,7 +6,8 @@ class Api::V1::AnimalsController < ApplicationController
   end
 
   def show
-
+    @animal = Animal.find(params[:id])
+    json_response(@animal)
   end
 
   def create
