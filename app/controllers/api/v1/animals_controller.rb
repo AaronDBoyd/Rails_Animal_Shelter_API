@@ -22,7 +22,12 @@ class Api::V1::AnimalsController < ApplicationController
   end
 
   def destroy
-
+    @animal = Animal.find(params[:id])
+    if @animal.destroy
+      render status: 200, json: {
+        message: "This animal has been seccessfully adopted."
+      } 
+    end
   end
 
   private
