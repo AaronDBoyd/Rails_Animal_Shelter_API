@@ -41,6 +41,7 @@ password: <%= ENV['POSTGRES_PASSWORD'] %>
 * `rake db:migrate` - this will upload the schema design to the database.
 * `rake db:test:prepare` - this will design the test database to mirror the development database.
 * `rake db:seed` - this with auto-populate the database.
+* `rspec` - this will run all the specs.
 * `rails s` - this will run the rails server so the project can be viewed in the browser.(keep this terminal separate from your working terminal.)
 * To test the API endpoints you will need to download an API platform like (Postman.)[https://www.postman.com/downloads/] Then, visit `localhost:3000/api/v1/animals` to view all animals.
 
@@ -48,14 +49,14 @@ password: <%= ENV['POSTGRES_PASSWORD'] %>
 | Usage | Method | URL | Parameters |
 | :---: | :---: | :---: | :---: |
 | See All Animals | GET | `localhost:3000/api/v1/animals` |  |
-| See Pages of Animals listed(10 at a time) | GET | `localhost:3000/api/v1/animals?page=(integer here)` | :page |
-| Find a specific animal by ID | GET | `localhost:3000/api/v1/animals/:id` | |
+| See Pages of Animals listed(10 at a time) | GET | `localhost:3000/api/v1/animals?page=[integer]` | :page |
+| Find a specific animal by ID | GET | `localhost:3000/api/v1/animals/[:id]` | |
 | Find a specific animal by name(case-insensitive) | GET | `localhost:3000/api/v1/animals?name=(insert full or partial name)` | :name |
 | Find a specific animal by breed(case-insensitive) | GET | `localhost:3000/api/v1/animals?breed=(insert full or partial breed)` | :breed |
 | Find a random animal | GET | `localhost:3000/api/v1/animals?random=true` | :random |
-| Create an animal entry | POST | `localhost:3000/api/v1/animals` | :name, :age & :breed |
-| Update an animal entry | PUT | `localhost:3000/api/v1/animals/:id` | :name, :age & :breed |
-| Delete an animal entry | DELETE | `localhost:3000/api/v1/animals/:id` |  |
+| Create an animal entry | POST | `localhost:3000/api/v1/animals?name=[string]&age=[integer]&breed=[string]` | :name, :age & :breed |
+| Update an animal entry | PUT | `localhost:3000/api/v1/animals/[:id]?name=[string]&age=[integer]&breed=[string]` | :name and/or :age and/or :breed |
+| Delete an animal entry | DELETE | `localhost:3000/api/v1/animals/[:id]` |  |
 
 ## Known Bugs
 
